@@ -1,0 +1,11 @@
+api which its calling
+-IMGW
+-OpenWeatherMap
+-WeatherAPI
+-Visual Crossing
+-Tomorrow.io
+-World Weather Online
+-Meteostat
+-NOAA Climate Data API
+-ECMWF
+-NASA Power API
