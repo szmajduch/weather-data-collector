@@ -13,6 +13,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -32,19 +33,19 @@ public class IMGWWeatherService extends WeatherService {
     }
 
 
-    public Mono<ResponseEntity<List<WeatherStationRecord>>> getStationData() {
-        return getDataAsList(IMGWApiEndpoint.SYNOP_DATA, new ParameterizedTypeReference<>() {});
+    public Flux<WeatherStationRecord> getStationData() {
+        return getFluxData(IMGWApiEndpoint.SYNOP_DATA, new ParameterizedTypeReference<>() {});
     }
 
-    public Mono<ResponseEntity<List<TempRecordHydro>>> getWaterTempData(){
-        return getDataAsList(IMGWApiEndpoint.HYDRO_DATA, new ParameterizedTypeReference<>() {});
+    public Flux<TempRecordHydro> getWaterTempData(){
+        return getFluxData(IMGWApiEndpoint.HYDRO_DATA, new ParameterizedTypeReference<>() {});
     }
 
-    public Mono<ResponseEntity<List<WaterLevelHydroRecord>>> getWaterLevelData(){
-        return getDataAsList(IMGWApiEndpoint.HYDRO_DATA_2, new ParameterizedTypeReference<>() {});
+    public Flux<WaterLevelHydroRecord> getWaterLevelData(){
+        return  getFluxData(IMGWApiEndpoint.HYDRO_DATA_2, new ParameterizedTypeReference<>() {});
     }
 
-    public Mono<ResponseEntity<List<MeteoRecord>>> getMeteoData(){
-        return getDataAsList(IMGWApiEndpoint.METEO_DATA, new ParameterizedTypeReference<>() {});
+    public Flux<MeteoRecord> getMeteoData(){
+        return getFluxData(IMGWApiEndpoint.METEO_DATA, new ParameterizedTypeReference<>() {});
     }
 }
